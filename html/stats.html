@@ -1,0 +1,87 @@
+<!-- Julia Duenkelsbuehler  --->
+
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raccoon Runecasters</title>
+    <link rel="stylesheet" href="../css/stats.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/arcade-classic" rel="stylesheet">
+    <!-- Añadir Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header class="header">
+        <h1>R a c c o o n    R u n e c a s t e r s</h1>
+    </header>
+    <nav class="topnav">
+        <a href="../Index.html">Play</a>
+        <a href="instruction.html">Instructions</a>
+        <a href="stats.html">Statistics</a>
+        <a href="cards.html">Cards</a>
+    </nav>
+    <div class="main-content">
+        <h2>Estas son las estadísticas</h2>
+        <!-- Añadir canvas para la gráfica -->
+        <canvas id="myChart" width="400" height="400"></canvas>
+    </div>
+    <footer class="footer">
+        © 2024 Raccoon Runecasters
+    </footer>
+    <!-- Añadir el script para obtener los datos y generar la gráfica -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('/card-history-stats')
+                .then(response => response.json())
+                .then(data => {
+                    const ctx = document.getElementById('myChart').getContext('2d');
+                    const myChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: data.map(item => `Carta ${item.Card_ID}`),
+                            datasets: [{
+                                label: 'Veces Jugadas',
+                                data: data.map(item => item.TotalPlayed),
+                                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                                borderColor: 'rgba(54, 162, 235, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    title: {
+                                        display: true,
+                                        text: 'Cantidad'
+                                    }
+                                },
+                                x: {
+                                    title: {
+                                        display: true,
+                                        text: 'ID de la Carta'
+                                    }
+                                }
+                            },
+                            plugins: {
+                                legend: {
+                                    display: true,
+                                    position: 'top',
+                                    labels: {
+                                        color: 'rgb(255, 99, 132)'
+                                    }
+                                }
+                            }
+                        }
+                    });
+                })
+                .catch(error => console.error('Error al obtener datos:', error));
+        });
+    </script>
+</body>
+</html>
