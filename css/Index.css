@@ -1,0 +1,76 @@
+/* Julia Duenkelsbuehler */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #C5EEFF;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #0099A8;
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+header h1 {
+    font-family: 'ArcadeClassic', sans-serif;
+    font-size: 2.5rem;
+}
+
+.topnav {
+    background-color: #00B6C9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 14px 0;
+}
+
+.topnav a {
+    color: white;
+    text-align: center;
+    padding: 0 16px;
+    text-decoration: none;
+    font-family: 'Press Start 2P', sans-serif;
+}
+
+.topnav a:hover {
+    background-color: pink;
+    color: black;
+}
+
+.main-content {
+    flex: 1;
+    padding: 2rem;
+}
+
+.main-content h2 {
+    font-family: 'ArcadeClassic', sans-serif;
+    font-size: 2rem;
+}
+.SimpleHolder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+footer {
+    background-color: #0099A8;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: auto;
+    font-family: 'ArcadeClassic', sans-serif;
+}
